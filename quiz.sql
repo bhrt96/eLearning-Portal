@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 11, 2016 at 09:12 AM
+-- Generation Time: Apr 11, 2016 at 10:37 AM
 -- Server version: 10.0.17-MariaDB
 -- PHP Version: 5.6.14
 
@@ -23,51 +23,14 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `student`
+-- Table structure for table `studentAnswer`
 --
 
-CREATE TABLE `student` (
+CREATE TABLE `studentAnswer` (
   `StudentId` int(11) NOT NULL,
-  `name` varchar(25) NOT NULL,
-  `subject` varchar(25) NOT NULL,
-  `college` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `studentRegister`
---
-
-CREATE TABLE `studentRegister` (
-  `StudentId` int(11) NOT NULL,
-  `username` varchar(25) NOT NULL,
-  `password` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `teacher`
---
-
-CREATE TABLE `teacher` (
-  `TeacherId` int(11) NOT NULL,
-  `name` varchar(25) NOT NULL,
-  `subject` varchar(25) NOT NULL,
-  `college` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `teacherRegister`
---
-
-CREATE TABLE `teacherRegister` (
-  `TeacherId` int(11) NOT NULL,
-  `username` varchar(25) NOT NULL,
-  `password` varchar(25) NOT NULL
+  `questionId` varchar(25) NOT NULL,
+  `answer` varchar(250) NOT NULL,
+  `points` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -75,60 +38,22 @@ CREATE TABLE `teacherRegister` (
 --
 
 --
--- Indexes for table `student`
+-- Indexes for table `studentAnswer`
 --
-ALTER TABLE `student`
-  ADD PRIMARY KEY (`StudentId`);
+ALTER TABLE `studentAnswer`
+  ADD KEY `stuid` (`StudentId`),
+  ADD KEY `queid` (`questionId`);
 
---
--- Indexes for table `studentRegister`
---
-ALTER TABLE `studentRegister`
-  ADD PRIMARY KEY (`username`),
-  ADD KEY `stu_id` (`StudentId`);
-
---
--- Indexes for table `teacher`
---
-ALTER TABLE `teacher`
-  ADD PRIMARY KEY (`TeacherId`);
-
---
--- Indexes for table `teacherRegister`
---
-ALTER TABLE `teacherRegister`
-  ADD PRIMARY KEY (`username`),
-  ADD KEY `tea_id` (`TeacherId`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `student`
---
-ALTER TABLE `student`
-  MODIFY `StudentId` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `teacher`
---
-ALTER TABLE `teacher`
-  MODIFY `TeacherId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1001;
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `studentRegister`
+-- Constraints for table `studentAnswer`
 --
-ALTER TABLE `studentRegister`
-  ADD CONSTRAINT `stu_id` FOREIGN KEY (`StudentId`) REFERENCES `student` (`StudentId`);
-
---
--- Constraints for table `teacherRegister`
---
-ALTER TABLE `teacherRegister`
-  ADD CONSTRAINT `tea_id` FOREIGN KEY (`TeacherId`) REFERENCES `teacher` (`TeacherId`);
+ALTER TABLE `studentAnswer`
+  ADD CONSTRAINT `queid` FOREIGN KEY (`questionId`) REFERENCES `questionBank` (`questionId`),
+  ADD CONSTRAINT `stuid` FOREIGN KEY (`StudentId`) REFERENCES `student` (`StudentId`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
