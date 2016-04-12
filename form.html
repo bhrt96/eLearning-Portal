@@ -1,14 +1,19 @@
 <!DOCTYPE html>
+<html>
 <title>Register</title>
 <head></head>
 <body>
 
-<form name="form1" method="post	" action="C:\xampp\cgi-bin\python1.py">
+<form name="form1" method="POST" action="\cgi-bin\register.py">
 
-Choose a Username: <input type="text" name="username" id="username"><br><br>
-Choose a Password: <input type="password" name="password" id="password"><br><br>
-<input type="radio" name="radio" value="student">student
-<input type="radio" name="radio" value="teacher">teacher
+Name: <input type="text" name="name" id="name" required><br><br>
+Choose a Username: <input type="text" name="username" id="username" required><br><br>
+Choose a Password: <input type="password" name="password" id="password" required><br><br>
+<input type="radio" name="sel" value="student" onchange="func()" >student
+<input type="radio" name="sel" value="teacher" onchange="nfunc()">teacher<br><br>
+Subject: <input type="text" name="subject" id="subject" required><br><br>
+College: <input type="text" name="college" id="college" required><br><br>
+
 <br><br>
 <input type="submit"  value="Register" >
 
@@ -16,3 +21,16 @@ Choose a Password: <input type="password" name="password" id="password"><br><br>
 
 
 </body>
+
+<script>
+function func() {
+    document.getElementById("subject").disabled = true;
+    document.getElementById("subject").value= null;
+}
+</script>
+<script>
+function nfunc() {
+    document.getElementById("subject").disabled = false;
+}
+</script>
+</html>
