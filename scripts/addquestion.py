@@ -37,7 +37,7 @@ if(question!= 'Not entered'):
             if 'HTTP_COOKIE' in os.environ :
                 cookie = Cookie.SimpleCookie(os.environ["HTTP_COOKIE"])
             else :
-                print "session cookie not set"
+                print "Please login to continue"
 
             db = MySQLdb.connect('localhost','root','1315','quiz', unix_socket="/opt/lampp/var/mysql/mysql.sock")
             cur=db.cursor()
@@ -50,9 +50,8 @@ if(question!= 'Not entered'):
 
             cur.execute("""select name, subject from teacher where teacherId='%d'"""% teacherId[0])
             var= cur.fetchone()
-
-            cur.execute("""insert into questionBank values ('%s', '%s', '%s','%s','%s','%s','%s','%s','%s' )""" %(var[1]+str(teacherId[0]), question, answer , optionA, optionB, optionC, optionD, var[1], username))
-            print "success"
+            cur.execute("""insert into questionBank (question, answer , optionA, optionB, optionC, optionD, subject, setBy) values ('%s', '%s','%s','%s','%s','%s','%s','%s' )""" %(question, answer , optionA, optionB, optionC, optionD, var[1], username[0]))
+            print "added successfully"
             db.commit()
         except:
             print "error"
