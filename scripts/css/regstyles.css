@@ -1,0 +1,172 @@
+@charset "UTF-8";
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+#signintabs{
+	background: #0A1527;
+	color: #ffffff;
+}
+#signin_container {
+  margin: auto;
+  width: 50%;
+  max-width: 600px;
+  min-height: 530px;
+  display: table;
+  padding: 62px;
+  background: #0A1527;
+  color: #ffffff;
+  -webkit-box-shadow: 2px 2px 10px -1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 2px 2px 10px -1px rgba(0, 0, 0, 0.75);
+  box-shadow: 2px 2px 10px -1px rgba(0, 0, 0, 0.75);
+}
+#signin_container ul {
+  list-style: none;
+  width: 100%;
+  float: left;
+  margin-bottom: 24px;
+  padding: 0px;
+}
+#signin_container ul li {
+  outline: 0;
+  float: left;
+  margin-right: 24px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid transparent;
+}
+#signin_container ul li a {
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 18px;
+  color: #aaa;
+  outline: 0;
+}
+#signin_container ul li a:hover {
+  color: #ffffff;
+}
+#signin_container ul li.ui-tabs-active {
+  border-color: #1161EE;
+}
+#signin_container ul li.ui-tabs-active a {
+  color: #ffffff;
+}
+#signin_container .tab-panel {
+  width: 100%;
+  float: left;
+  display: table;
+  padding-top: 66px;
+}
+#signin_container .tab-panel .input-container {
+  margin: 0px -12px 24px;
+}
+#signin_container .tab-panel .input-container label {
+  text-transform: uppercase;
+  float: left;
+  margin-bottom: 6px;
+  margin-left: 20px;
+  color: #aaa;
+  font-size: 12px;
+}
+#signin_container .tab-panel .input-container input[type="password"],
+#signin_container .tab-panel .input-container input[type="email"],
+#signin_container .tab-panel .input-container input[type="text"] {
+  width: 100%;
+  outline: none;
+  border-radius: 20px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid transparent;
+  padding: 0 20px;
+  color: #ffffff;
+  transition: all 500ms;
+}
+#signin_container .tab-panel .input-container input[type="password"]:hover, #signin_container .tab-panel .input-container input[type="password"]:focus,
+#signin_container .tab-panel .input-container input[type="email"]:hover,
+#signin_container .tab-panel .input-container input[type="email"]:focus,
+#signin_container .tab-panel .input-container input[type="text"]:hover,
+#signin_container .tab-panel .input-container input[type="text"]:focus {
+  border-color: #ccc;
+  background: none;
+}
+#signin_container .tab-panel .checkbox-container {
+  position: relative;
+  padding: 6px 32px 0;
+  margin-bottom: 24px;
+}
+#signin_container .tab-panel .checkbox-container input[type="checkbox"] {
+  position: absolute;
+  left: -9999px;
+}
+#signin_container .tab-panel .checkbox-container input[type="checkbox"]:checked ~ label:after {
+  visibility: visible;
+}
+#signin_container .tab-panel .checkbox-container label {
+  cursor: pointer;
+}
+#signin_container .tab-panel .checkbox-container label:before, #signin_container .tab-panel .checkbox-container label:after {
+  border-radius: 3px;
+  position: absolute;
+  left: 2px;
+  top: 8px;
+  width: 12px;
+  height: 12px;
+  border: 1px solid transparent;
+  padding: 2px;
+}
+#signin_container .tab-panel .checkbox-container label:after {
+  content: "✔";
+  background-color: #1161EE;
+  visibility: hidden;
+  font-size: 13px;
+  line-height: 12px;
+  text-align: center;
+}
+#signin_container .tab-panel .checkbox-container label:before {
+  content: "";
+  background: rgba(255, 255, 255, 0.3);
+}
+#signin_container .tab-panel .checkbox-container label:hover:before {
+  border-color: #ffffff;
+}
+#signin_container .tab-panel .btn-container {
+  margin: 0 -12px 24px;
+}
+#signin_container .tab-panel .btn-container .signin-button {
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  text-align: center;
+  background: #1161EE;
+  color: #ffffff;
+  width: 100%;
+  line-height: 40px;
+  border-radius: 20px;
+  -webkit-transition: background 500ms;
+  -moz-transition: background 500ms;
+  transition: background 500ms;
+  outline: none;
+}
+#signin_container .tab-panel .btn-container .signin-button:hover {
+  background: #3F7DF1;
+}
+#signin_container .tab-panel .forgotten-password {
+  float: left;
+  width: 100%;
+  margin-top: 24px;
+  padding: 24px 0 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+#signin_container .tab-panel .forgotten-password a {
+  text-decoration: none;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.3);
+}
+#signin_container .tab-panel .forgotten-password a:hover {
+  color: #ffffff;
+}

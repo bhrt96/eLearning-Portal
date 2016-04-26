@@ -6,8 +6,25 @@ import Cookie
 import os
 
 print "Content-type: text/html\r\n\r\n"
-print "<html>"
-print "<body>"
+print """
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel = "stylesheet" href = "/css/materialize.css" />
+    <script src = "/js/jquery-1.12.2.js"></script>
+    <script src = "/js/materialize.js"></script>
+</head>
+<body class =  "">
+
+    <div class = "row full-height">
+
+        <div class = "row center-align site-name">
+            <h4><a >QuestionBank</a></h4>
+        </div>
+        <div class = "row">
+        <div class = "card-panel col s6" style="padding-top:15px;">
+                <h5>Added Questions</h5>"""
 
 form = cgi.FieldStorage()
 if form.getvalue('question'):
@@ -54,42 +71,60 @@ j=cur.rowcount
 k=1
 
 
-for i in var:   
-    print """<table><form action="" method="">                                                                                                                                                      
-            <tr>
-            <th>Ques id:%d </th>
-            <th>Question: %s</th>
-            </tr>   
-            <tr>
-            <td>A: %s<!--input type="text" name="" value="a"--></td> 
-            <td>B: %s<!--input type="text" name="" value="b"--></td> 
-            <td>C: %s<!--input type="text" name="" value="c"--></td> 
-            <td>D: %s<!--input type="text" name="" value="d"--></td>
-            </tr>
-            <tr>
-            <td>Answer: %s<!--input type="text" name="" value=""--></td>
-            </tr></table>""" % (i[0],i[1],i[3],i[4],i[5],i[6],i[2])
-    print '<br>'
+for i in var:
+    print """
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Ques id: %d ::</th>
+                                <th>%s</th> <!--question-->
+                            </tr>  
+                        </thead>
+                        <tbody> 
+                            <tr>
+                                <td>A: %s</td> 
+                                <td>B: %s</td> 
+                                <td>C: %s</td> 
+                                <td>D: %s</td>
+                            </tr>
+                            <tr>
+                                <td>Answer: %s</td>
+                            </tr>
+                            <br>
+                        </tbody>
+                    </table>
+                """  % (i[0],i[1],i[3],i[4],i[5],i[6],i[2]) 
     k=k+1
+print "</div>"
 
-print r"""<h4>Add Question</h4>
-<form name="addqform" method="POST" action="\cgi-bin\elearning\addquestion.py" >
-Question: <textarea name="question" cols="100" rows="2"></textarea><br><br>
-Correct Answer: <input type="text" name="answer" id="answer"><br><br>
-Option A: <input type="text" name="optionA" >
-Option B: <input type="text" name="optionB" >
-Option C: <input type="text" name="optionC" >
-Option D: <input type="text" name="optionD" ><br><br>
-<input type="submit"  value="Submit" target="\cgi-bin\elearning\addquestion.py">
-</form>"""
-
-print r"""<h4>Delete Question</h4>
-<form name="delqform" method="get" action="\cgi-bin\elearning\addquestion.py" >
-Question ID : <input type="text" name="qid" >
-<input type="submit"  value="Submit" target="\cgi-bin\elearning\addquestion.py">
-</form>"""
+print r"""<div class ="card-panel col s6" style="padding-top:10px;">
+                <h5>Add Question</h5>
+                    <form name="addqform" method="POST" action="/cgi-bin/scripts/teacher.py" >
+                    Question: <textarea class="materialize-textarea" name="question"></textarea><br><br>
+                    Correct Answer: <input type="text" name="answer" id="answer"><br><br>
+                    Option A: <input type="text" name="optionA" >
+                    Option B: <input type="text" name="optionB" >
+                    Option C: <input type="text" name="optionC" >
+                    Option D: <input type="text" name="optionD" ><br><br>
+                    <div class = "row ">
+                        <button class="btn waves-effect waves-light" type="submit" target="/cgi-bin/scripts/teacher.py">
+                            Submit
+                        </button>
+                    </div>
+                    </form><br><br>
+                    <h5>Delete Question</h5>
+                    <form name="delqform" method="get" action="/cgi-bin/scripts/teacher.py" >
+                    Question ID : <input type="text" name="qid" >
+                    <div class = "row ">
+                        <button class="btn waves-effect waves-light" type="submit" target="/cgi-bin/scripts/teacher.py">
+                            Submit
+                        </button>
+                    </div>
+                    </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>"""
 
 db.close()
-
-print "</body>"
-print "</html>"
