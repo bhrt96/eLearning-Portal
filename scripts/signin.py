@@ -35,19 +35,17 @@ print r"""
     <script src = "/js/jquery-1.12.2.js"></script>
     <script src = "/js/materialize.js"></script>
 </head>
-<body class =  "">
+<body background="/elearning/books2.jpg" class ="" >
 
-    <div class = "row full-height">
-
-        <div class = "row center-align site-name">
-            <h4><a >Log In</a></h4>
-        </div>
-
+    <div class = "row " style="padding-top:8%">
         <div class = "row">
-            <div class = "card-panel col s4 offset-s4" style="padding-top:10px;">
+            <div class = "card-panel col s4 offset-s1 " >
                 <div class = "row">
                     <form class = "col s12" action = "\cgi-bin\scripts\signin.py" method = "post">
                         <div class="row">
+                            <div class = "center-align">
+                                <h4><a >Log In</a></h4>
+                            </div>
                             <div class="input-field col s6">
                                 <p>
                                   <input class="with-gap" name="sel" type="radio" value="teacher" id="teacher"  checked/>
@@ -92,10 +90,13 @@ username =form.getvalue('username')
 password =form.getvalue('password')
 sel = form.getvalue('sel')
 
+db = MySQLdb.connect('localhost','root','1315','quiz', unix_socket="/opt/lampp/var/mysql/mysql.sock")
+cur=db.cursor()
+
+cur.execute("""delete from session where sessionId= '%s'"""% cookie["session"].value)
+db.commit()
 try:
 
-    db = MySQLdb.connect('localhost','root','1315','quiz', unix_socket="/opt/lampp/var/mysql/mysql.sock")
-    cur=db.cursor()
 
     if sel=='student':
         sql="select * from studentRegister"
@@ -106,6 +107,8 @@ try:
             if var2[2] == password and var2[1]==username:
                 cookie["username"]= username
                 cookie["password"]= password
+                cur.execute("""delete from session where username = %s""" , cookie["username"].value)
+                cur.execute("""insert into session values (%s, %s)""", (cookie["session"].value,cookie["username"].value))
                 print "<script>window.location.assign('/cgi-bin/scripts/choosesubject.py');</script>"
                 break
         else :

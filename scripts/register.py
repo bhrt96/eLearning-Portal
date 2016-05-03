@@ -13,18 +13,18 @@ print r"""
     <script src = "/js/jquery-1.12.2.js"></script>
     <script src = "/js/materialize.js"></script>
 </head>
-<body class =  "">
+<body background="/elearning/books2.jpg" class =  "">
 
-    <div class = "row full-height">
+    <div class = "row " style="padding-top:8px">
 
-        <div class = "row center-align site-name">
-            <h4><a >Registration</a></h4>
-        </div>
 
         <div class = "row">
             <div class = "card-panel col s6 offset-s3" style="padding-top:10px;">
                 <div class = "row">
                     <form class = "col s12" action = "\cgi-bin\scripts\register.py" method = "post">
+        <div class = "center-align">
+            <h4><a >Registration</a></h4>
+        </div>
                         <div class="row">
                             <div class="input-field col s6">
                                 <p>
