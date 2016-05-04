@@ -1,2 +1,2 @@
 # eLearning-Portal
-Learn by giving open ebook quizzes
+Learn by giving online quizzes
